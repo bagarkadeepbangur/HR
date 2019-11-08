@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+      $( "#form1" ).submit(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+          type: 'POST',
+          url: '/insert',
+          data: $('#form1').serialize(),
+          dataType: "json",
+          success: function(response){
+            if(response.status == "Success"){
+            $('#form1')[0].reset();
+
+                   document.getElementById("check").innerHTML=response.Success;
+                  
+                  
+                   document.getElementById("check").innerHTML="register success";
+                  
+                  if (response.Success=="You are regestered") {
+                    document.getElementById("aa").click();
+                  };
+            }else{
+              document.getElementById("check").innerHTML="Failed";
+            }
+
+                },
+                error: function() {
+                }
+              })
+      });
+      $( "#form2" ).submit(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+          type: 'POST',
+          url: '/update',
+          data: $('#form2').serialize(),
+          dataType: "json",
+          success: function(response){
+            if(response.status == "Success"){
+            $('#form2')[0].reset();
+
+                   document.getElementById("check").innerHTML=response.Success;
+                  
+                  
+                   document.getElementById("check").innerHTML="success";
+                  
+                  if (response.Success=="You are regestered") {
+                    document.getElementById("aa").click();
+                  };
+            }else{
+              document.getElementById("check").innerHTML="Failed";
+            }
+
+                },
+                error: function() {
+                }
+              })
+      });
+      $( "#form3" ).submit(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+          type: 'POST',
+          url: '/delete',
+          data: $('#form3').serialize(),
+          dataType: "json",
+          success: function(response){
+            if(response.status == "Success"){
+            $('#form3')[0].reset();
+
+                   document.getElementById("check").innerHTML=response.Success;
+                  
+                  
+                   document.getElementById("check").innerHTML="register success";
+                  
+                  if (response.Success=="You are regestered") {
+                    document.getElementById("aa").click();
+                  };
+            }else{
+              document.getElementById("check").innerHTML="Failed";
+            }
+
+                },
+                error: function() {
+                }
+              })
+      });
+
+      $('#load').click(function(event){
+        $('.item').find("article").remove()
+
+        $.ajax({
+          type:'get',
+          url:'/get-data'
+        }).done(function(result){
+          for(let i=0;i<result.length;i++){
+            var output=`<article><div>Company Name:`+result[i].companyname+`</div><br><div>Company Address:`+result[i].companyaddress+`</div><br><div>Phone Number:`+result[i].phonenumber+`</div><br><div>Pincode:`+result[i].pincode+`</div><br><div>Company Type:`+result[i].companytype+`</div><br><div>ID:`+result[i]._id+`</div><br></article>`
+            console.log(output);
+            $('.item').append(output);
+            event.preventDefault();
+          }
+          })
+         .fail(function(e) {
+            console.log(e);
+          });
+      });
+});
+      
+   
+
+  </script>
+  </head>
+  <body>
+
+
+    <div class="add-requirement-btn"><i class="fas fa-sign-in-alt"></i> ADD Company</div>
+    <div class="show-requirement-btn"><i class="fas fa-sign-in-alt"></i> Show Company</div>
+    <div class="update-requirement-btn"><i class="fas fa-sign-in-alt"></i> Update Company</div>
+    <div class="delete-requirement-btn"><i class="fas fa-sign-in-alt"></i> Delete Company</div>
+    
+
+    <div>
+    <div class="login-box">
+      <div class="hide-login-btn"><i class="fas fa-times"></i></div>
+    <form class="login-form" id="form1" action="/insert" method="post">
+
+      <h1>Add Company</h1>
+      <input class="txtb" type="text" id="companyname" name="companyname" placeholder="Company Name">
+       <input class="txtb" type="text" id="companyaddress" name="companyaddress" placeholder="Company Address">
+       
+      <input class="txtb" type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number">
+     
+      <input type="text" id="pincode" name="pincode" class="txtb" placeholder="Pincode">
+      <input type="text" id="companytype" name="companytype" class="txtb" placeholder="Company Type">
+      <input class="login-btn" type="submit" name="" value="ADD">
+    </form>
+    </div>
+    <div class="mssg bg-danger">
+        <span id="check"></span>
+      </div>
+      <div id="LangTable"><a href="/login" id="aa"></a>
+      </div>
+    </div>
+
+    <div class="show-box">
+    <div class="hide-show-btn"><i class="fas fa-times"></i></div>
+    <section class="get">
+    <h3>Get Data<button id="load">LOAD DATA</a></button></h3>
+    
+    <div  style="overflow:scroll; height:400px;">
+       
+            <article class="item">
+               
+            </article>
+        
+    </div>
+	</section>
+    </div>
+    <div class="update-box">
+      <div class="hide-update-btn"><i class="fas fa-times"></i></div>
+    <form class="login-form" id="form2" action="/update" method="post">
+
+      <h1>Update Company</h1>
+      <input type="text" class="txtb" id="id" name="id" placeholder="ID">
+      <input class="txtb" type="text" id="companyname" name="companyname" placeholder="Company Name">
+       <input class="txtb" type="text" id="companyaddress" name="companyaddress" placeholder="Company Address">
+       
+      <input class="txtb" type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number">
+     
+      <input type="text" id="pincode" name="pincode" class="txtb" placeholder="Pincode">
+      <input type="text" id="companytype" name="companytype" class="txtb" placeholder="Company Type">
+      <input class="login-btn" type="submit" name="" value="Update">
+    </form>
+    </div>
+    <div  class="mssg bg-danger">
+        <span id="check"></span>
+      </div>
+      <div id="LangTable"><a href="/login" id="aa"></a>
+      </div>
+
+      <div class="delete-box">
+      <div class="hide-delete-btn"><i class="fas fa-times"></i></div>
+    <form class="login-form" id="form3" action="/delete" method="post">
+
+      <h1>Delete Company</h1>
+      <input type="text" class="txtb" id="id" name="id" placeholder="ID">
+      
+      <input class="login-btn" type="submit" name="" value="delete">
+    </form>
+    </div>
+
+    <div  class="mssg bg-danger">
+        <span id="check"></span>
+      </div>
+      <div id="LangTable"><a href="/login" id="aa"></a>
+      </div>
+
+
+
+
+    <script type="text/javascript">
+    $(".add-requirement-btn").on("click",function(){
+      $(".login-box").toggleClass("showed");
+    });
+    $(".hide-login-btn").on("click",function(){
+      $(".login-box").toggleClass("showed");
+    });
+    $(".show-requirement-btn").on("click",function(){
+      $(".show-box").toggleClass("showed");
+    });
+    $(".hide-show-btn").on("click",function(){
+      $(".show-box").toggleClass("showed");
+    });
+    $(".update-requirement-btn").on("click",function(){
+      $(".update-box").toggleClass("showed");
+    });
+    $(".hide-update-btn").on("click",function(){
+      $(".update-box").toggleClass("showed");
+    });
+    $(".delete-requirement-btn").on("click",function(){
+      $(".delete-box").toggleClass("showed");
+    });
+    $(".hide-delete-btn").on("click",function(){
+      $(".delete-box").toggleClass("showed");
+    });
+    </script>
+
+  </body>
+</html>

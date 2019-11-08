@@ -1,0 +1,225 @@
+*{
+  font-family: "montserrat",sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background: #333;
+}
+.login-box{
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(45deg,#9fbaa8,#31354c);
+  transition: 1s;
+}
+.show-box{
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(45deg,#9fbaa8,#31354c);
+  transition: 1s;
+}
+.update-box{
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(45deg,#9fbaa8,#31354c);
+  transition: 1s;
+}
+.delete-box{
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(45deg,#9fbaa8,#31354c);
+  transition: 1s;
+}
+.login-form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  text-align: center;
+}
+.login-form h1{
+  font-weight: 400;
+  margin-top: 0;
+}
+.txtb{
+  display: block;
+  box-sizing: border-box;
+  width: 240px;
+  background: #ffffff28;
+  border: 1px solid white;
+  padding: 10px 20px;
+  color: white;
+  outline: none;
+  margin: 10px 0;
+  border-radius: 6px;
+  text-align: center;
+
+}
+.companyname{
+  display: block;
+  box-sizing: border-box;
+  width: 240px;
+  background: #ffffff28;
+  border: 1px solid white;
+  padding: 10px 20px;
+  color: white;
+  outline: none;
+  margin: 10px 0;
+  border-radius: 6px;
+  text-align: center;
+
+}
+.login-btn{
+  width: 240px;
+  background: #2c3e50;
+  border: 0;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.hide-login-btn{
+  color: #000;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+  font-size: 24px;
+  opacity: .7;
+}
+.hide-show-btn{
+  color: #000;
+  position: absolute;
+  top: 25px;
+  right: 7px;
+  cursor: pointer;
+  font-size: 24px;
+  opacity: .7;
+}
+
+.hide-update-btn{
+  color: #000;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+  font-size: 24px;
+  opacity: .7;
+}
+.hide-delete-btn{
+  color: #000;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+  font-size: 24px;
+  opacity: .7;
+}
+.add-requirement-btn{
+  position: absolute;
+  top: 10%;
+  left: 68%;
+  transform: translate(-50%,-50%);
+  color: white;
+  border: 2px solid;
+  padding: 10px;
+  cursor: pointer;
+}
+.show-requirement-btn{
+  position: absolute;
+  top: 10%;
+  left: 85%;
+  transform: translate(-50%,-50%);
+  color: white;
+  border: 2px solid;
+  padding: 10px;
+  cursor: pointer;
+}
+.add-btn{
+    width: 40px;
+    background: #2c3e50;
+    border: 0;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 500px
+}
+#requirements{
+  display: block;
+  box-sizing: border-box;
+  width: 540px;
+  background: #ffffff28;
+  border: 1px solid white;
+  padding: 10px 20px;
+  color: white;
+  outline: none;
+  margin: 10px 0;
+  border-radius: 6px;
+  height: 50px;
+}
+#cn{
+   background: #333;
+   margin-bottom: -49px;
+}
+#profile{
+   background: #333;
+   margin-left: 297px;
+}
+#position{
+  top: 10%;
+}
+#agent{
+  margin-left: 305px;
+  margin-top: -48px;
+}
+
+.showed{
+  left: 0;
+}
+
+.update-requirement-btn{
+  position: absolute;
+  top: 20%;
+  left: 68%;
+  transform: translate(-50%,-50%);
+  color: white;
+  border: 2px solid;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.delete-requirement-btn{
+  position: absolute;
+  top: 20%;
+  left: 85%;
+  transform: translate(-50%,-50%);
+  color: white;
+  border: 2px solid;
+  padding: 10px;
+  cursor: pointer;
+}
+.get {
+  background: #ecf0f1;
+}
+section h3 {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+#id{
+  width: 534px
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>HR Portal</title>
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<link rel="stylesheet" href="main.css">
+
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="main.js"></script>
+
+		<style>
+			
+		</style>
+		<script type="text/javascript">
+			$(function() {
+				$('.close').click(function() {
+					$('.ad').css('display', 'none');
+				})
+			})
+		</script>
+		<script type="text/javascript">
+    $(document).ready(function(){
+
+      pop();
+
+      
+       /*$('#load').click(function(event){
+        
+
+        $.ajax({
+          type:'get',
+          url:'/get-data-dashboard'
+        }).done(function(result){
+          for(let i=0;i<result.length;i++){
+            var output=`<div>Requirement:`+result[i].requirements+`</div><br><div>Agent:`+result[i].agent+`</div><br>`
+            console.log(output);
+            $('.item').append(output);
+            event.preventDefault();
+          }
+          })
+         .fail(function(e) {
+            console.log(e);
+          });
+      });*/
+
+
+
+        $(".companyname").change(function (event) {
+            //alert("You have Selected  :: "+$(this).val());
+        $.ajax({
+          type:'get',
+          url:'/get-data-dashboard/' + $(this).val()+""
+        }).done(function(result){
+          console.log(result)
+          $('.item').empty()
+          for(let i=0;i<result.length;i++){
+            var output=`<div>Requirement:`+result[i].requirements+`</div><br><div>Agent:`+result[i].agent+`</div><br>`
+            console.log(output);
+            $('.item').append(output);
+            event.preventDefault();
+          }
+          })
+         .fail(function(e) {
+            console.log(e);
+          });
+        });
+ 
+});
+      
+   
+   function pop() {
+          $('.companyname').find("option").remove()
+        $.ajax({
+          type:'get',
+          url:'/get-company'
+        }).done(function(result){
+          for(let i=0;i<result.length;i++){
+            var output=`<option>`+result[i].companyname+`</option>`
+            console.log(output);
+            $('.companyname').append(output);
+            event.preventDefault();
+          }
+          })
+         .fail(function(e) {
+            console.log(e);
+          });
+   }
+
+  </script>
+
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo">
+				<i class="fa fa-tachometer"></i>
+				<span>HR PORTAL</span>
+			</div>
+			<a href="#" class="nav-trigger"><span></span></a>
+		</div>
+		<div class="side-nav">
+			<div class="logo">
+				<i class="fa fa-tachometer"></i>
+				<span>HR PORTAL</span>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<a href="#">
+							<span><i class="fa fa-home"></i></span>
+							<span>Dashboard</span>
+						</a>
+					</li>
+					<li>
+						<a href="company.html">
+							<span><i class="fa fa-building"></i></span>
+							<span>Company</span>
+						</a>
+					</li>
+					<li>
+						<a href="requirement.html">
+
+							<span><i class="fa fa-book"></i></span>
+							<span>Requirements</span>
+						</a>
+					</li>
+				
+				</ul>
+			</nav>
+		</div>
+		<div class="main-content">
+			<div class="title">
+				Check Here
+			</div>
+			<section class="get">
+    			<h3 style="margin-left: 15px;">Select Company</h3>
+      			<div class="input">
+          			
+          			<select  class="companyname" name="companyname">
+            			<option>Select Company</option>
+          			</select>
+      			</div>
+      		</section>
+			
+			<div class="main">
+				<div class="widget">
+					<div class="title">Details</div>
+					<div class="chart" style="overflow:scroll; height:400px;">
+						  <article class="item">
+               
+            </article>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
